@@ -1,0 +1,121 @@
+
+<div class="container fs-1 border">
+  <div class="row text-center">
+    <div class="col">
+      {{truckScore}} {{scoreIndicator('C')}}
+    </div>
+    <div class="col">
+      {{trainScore}} {{scoreIndicator('T')}}
+    </div>
+    <div class="col ">
+      {{boatScore}} {{scoreIndicator('B')}}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col">
+      🚚
+    </div>
+    <div class="col">
+      🚂
+    </div>
+    <div class="col ">
+      🚢
+    </div>
+  </div>
+
+  <div class="row text-center fs-3">
+    <div class="col border py-4">
+      <div type="button" *ngFor="let truckCard of getCaravanCards('C')" class="vstack border" (dblclick)="removeCard(truckCard)" (click)="truckCard.attachFaceCard(lastKey, lastSuit, 'C', faceCards); calculateScore(); clear()">{{truckCard.getDisplay()}}</div>
+      <div type="button" class="border " (click)="addCard('C')">{{getSymbol('C')}}</div>
+    </div>
+    <div class="col border py-4">
+      <div type="button" *ngFor="let trainCard of getCaravanCards('T')" class="vstack border" (dblclick)="removeCard(trainCard)" (click)="trainCard.attachFaceCard(lastKey, lastSuit, 'T', faceCards); calculateScore(); clear()">{{trainCard.getDisplay()}}</div>
+      <div type="button" class="border " (click)="addCard('T')">{{getSymbol('T')}}</div>
+    </div>
+    <div class="col border py-4">
+      <div type="button" *ngFor="let boatCard of getCaravanCards('B')" class="vstack border" (dblclick)="removeCard(boatCard)" (click)="boatCard.attachFaceCard(lastKey, lastSuit, 'B', faceCards); calculateScore(); clear()">{{boatCard.getDisplay()}}</div>
+      <div type="button" class="border " (click)="addCard('B')">{{getSymbol('B')}}</div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container fixed-bottom overflow-hidden">
+  <div class="row text-center">
+    <div class="col border fs-3">
+      {{lastKey}} {{lastSuit}}
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col border py-4" type="button" (click)="pressKey('A')">
+      A
+    </div>
+    <div class="col border py-4" type="button" (click)="pressKey('2')">
+      2
+    </div>
+    <div class="col border py-4" type="button" (click)="pressKey('3')">
+      3
+    </div>
+    <div class="col border py-4" type="button" (click)="pressKey('4')">
+      4
+    </div>
+    <div class="col border py-4" type="button" (click)="pressSuit('♥')">
+      ♥
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col border py-4" type="button" (click)="pressKey('5')">
+      5
+    </div>
+    <div class="col border py-4" type="button" (click)="pressKey('6')">
+      6
+    </div>
+    <div class="col border py-4" type="button" (click)="pressKey('7')">
+      7
+    </div>
+    <div class="col border py-4" type="button" (click)="pressKey('8')">
+      8
+    </div>
+    <div class="col border py-4" type="button" (click)="pressSuit('♦')">
+      ♦
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col border py-4" type="button" (click)="pressKey('9')">
+      9
+    </div>
+    <div class="col border py-4" type="button" (click)="pressKey('10')">
+      10
+    </div>
+    <div class="col border py-4" type="button" (click)="pressKey('J')">
+      J
+    </div>
+    <div class="col border py-4" type="button" (click)="pressKey('Q')">
+      Q
+    </div>
+    <div class="col border py-4" type="button" (click)="pressSuit('♣')">
+      ♣
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col border py-4" type="button" (click)="pressKey('K')">
+      K
+    </div>
+    <div class="col border py-4 bg-dark-subtle" type="button" (click)="pressJoker()">
+      🤡
+    </div>
+    <div class="col border py-4 bg-warning-subtle" (click)="clear()">
+      ⬅️
+    </div>
+    <div class="col border py-4 bg-danger-subtle" (click)="undo()">
+      ↪️
+    </div>
+    <div class="col border py-4" type="button" (click)="pressSuit('♠')">
+      ♠
+    </div>
+  </div>
+</div>
